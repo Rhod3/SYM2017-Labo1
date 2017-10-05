@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -43,10 +44,12 @@ public class MainActivity extends AppCompatActivity {
     // For logging purposes
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    // Just for test purposes : please destroy !
-    //private static final String validEmail = "toto@tutu.com";
-    private static final String validEmail = "toto";
-    private static final String validPassword = "tata";
+    private static final Pair[] credentials = {
+            Pair.create("toto@tutu.com", "tata"),
+            Pair.create("nadir.benallal@heig-vd.ch", "blu"),
+            Pair.create("nicolas.rod@heig-vd.ch", "humour"),
+            Pair.create("basile.chatillon@heig-vd.ch", "sat")
+    };
     private static final String AT = "@";
 
     // GUI elements
@@ -77,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
                 String mail = email.getText().toString();
                 String passwd = password.getText().toString();
 
-                //if (!mail.contains(AT)) {
-                //    Toast.makeText(MainActivity.this, getResources().getString(R.string.wrong_email_format), Toast.LENGTH_LONG).show();
+                if (!mail.contains(AT)) {
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.wrong_email_format), Toast.LENGTH_LONG).show();
 
-                //} else
+                } else
                     if (isValid(mail, passwd)) {
 					/* Ok, valid combination, do something or launch another activity...
 					 * The current activity could be finished, but it is not mandatory.
@@ -115,13 +118,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isValid(String mail, String passwd) {
+    private static boolean isValid(String mail, String passwd) {
         if (mail == null || passwd == null) {
             Log.w(TAG, "isValid(mail, passwd) - mail and passwd cannot be null !");
             return false;
         }
+
         // Return true if combination valid, false otherwise
-        return (mail.equals(validEmail) && passwd.equals(validPassword));
+        for (int i = 0; i < credentials.length; i++)
+        {
+            if (credentials[i].first.equals(mail) && credentials[i].second.equals(passwd))
+                return true;
+        }
+
+        return false;
     }
 
     protected void showErrorDialog(String mail, String passwd) {
@@ -129,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 		 * Pop-up dialog to show error
 		 */
         AlertDialog.Builder alertbd = new AlertDialog.Builder(this);
-        alertbd.setIcon(android.R.drawable.ic_dialog_email);
+        alertbd.setIcon(android.R.drawable.ic_dialog_email); //R.drawable.ic_email_fail ???
         alertbd.setTitle(R.string.wronglogin);
         alertbd.setMessage(R.string.wrong);
         alertbd.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
