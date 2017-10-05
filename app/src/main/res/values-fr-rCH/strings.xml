@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SYM Chablon d\'activité</string>
+    <string name="email">Courriel</string>
+    <string name="psw">Mot de passe</string>
+    <string name="signin">Connexion</string>
+    <string name="wronglogin">Mauvaise authentification</string>
+    <string name="wrong_email_format">Courriel au format invalide</string>
+    <string name="wrong">Courriel ou mot de passe non-reconnu</string>
+    <string name="good">Authentification validée, bienvenue !</string>
+    <string name="default_email">Adresse courriel</string>
+    <string name="default_imei">IMEI</string>
+</resources>
