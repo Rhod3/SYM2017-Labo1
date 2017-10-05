@@ -57,14 +57,7 @@ public class George extends AppCompatActivity {
         if (downloadsSD.isDirectory())
         {
             String path = downloadsSD.getAbsolutePath() + "/fabdut.jpg";
-            File file = new File(path);
-            if (file.exists())
-                Toast.makeText(this, "IT WORKED BITCH !", Toast.LENGTH_LONG).show();
-
-            Bitmap bmp = BitmapFactory.decodeFile(file.getAbsolutePath());
-            photo.setImageBitmap(bmp);
-
-            System.out.println("blu : " + bmp == null ? " pute" : " alola");
+            photo.setImageBitmap(BitmapFactory.decodeFile(path));
         }
     }
 
