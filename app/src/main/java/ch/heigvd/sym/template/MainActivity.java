@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         // Show the welcome screen / login authentication dialog
         setContentView(R.layout.authent);
 
+        Toast.makeText(MainActivity.this, MainActivity.this.getClass().getSimpleName() + " : onCreate()", Toast.LENGTH_SHORT).show();
+
         // Link to GUI elements
         this.email = (EditText) findViewById(R.id.email);
         this.password = (EditText) findViewById(R.id.password);
@@ -118,7 +120,49 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private static boolean isValid(String mail, String passwd) {
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Toast.makeText(MainActivity.this, MainActivity.this.getClass().getSimpleName() + " : onStart()", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Toast.makeText(MainActivity.this, MainActivity.this.getClass().getSimpleName() + " : onResume()", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        Toast.makeText(MainActivity.this, MainActivity.this.getClass().getSimpleName() + " : onPause()", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Toast.makeText(MainActivity.this, MainActivity.this.getClass().getSimpleName() + " : onStop()", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        Toast.makeText(MainActivity.this, MainActivity.this.getClass().getSimpleName() + " : onRestart()", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        Toast.makeText(MainActivity.this, MainActivity.this.getClass().getSimpleName() + " : onDestroy()", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isValid(String mail, String passwd) {
         if (mail == null || passwd == null) {
             Log.w(TAG, "isValid(mail, passwd) - mail and passwd cannot be null !");
             return false;
