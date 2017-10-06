@@ -3,6 +3,7 @@ package ch.heigvd.sym.template;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
@@ -45,13 +46,18 @@ public class George extends AppCompatActivity {
         email.setText(mainActivityExtras.getString(Global.EMAIL_KEY));
 
         //Affichage de l'IMEI
-        String androidID = Settings.Secure.getString(this.getContentResolver(),
-                Settings.Secure.ANDROID_ID);
+        String androidID = null;
+        TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            // Do something for O and above versions
+            androidID = telephonyManager.getImei();
+        } else{
+            // do something for phones running an SDK before O
+            androidID = telephonyManager.getDeviceId();
+        }
 
         if (androidID == null)
-        {
             androidID = "IMEI";
-        }
 
         imei.setText(androidID);
 
