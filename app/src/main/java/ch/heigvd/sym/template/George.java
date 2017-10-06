@@ -31,7 +31,7 @@ public class George extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_george);
+        setContentView(R.layout.content_george);
 
         //Tracé du cycle de vie de l'activité à l'étape onCreate
         Toast.makeText(George.this, George.this.getClass().getSimpleName() + " : onCreate()", Toast.LENGTH_SHORT).show();
