@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".George"
+            android:name=".ProfileActivity"
             android:label="@string/title_activity_george"
             android:theme="@style/SymTheme.NoActionBar"></activity>
 

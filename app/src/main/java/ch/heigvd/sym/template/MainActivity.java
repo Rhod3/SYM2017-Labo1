@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 					 * But just display a small message before quitting...
 					 */
 
-					Intent intent = new Intent(MainActivity.this, George.class);
+					Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putString(Global.EMAIL_KEY, mail);
                     intent.putExtras(bundle);
@@ -162,6 +162,13 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, MainActivity.this.getClass().getSimpleName() + " : onDestroy()", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Modifié par rapport au projet Template: Vérifie que la combinaison mail/password passé
+     * en paramètre existent dans l'application et vérifie leur validité.
+     * @param mail Le mail de l'utilisateur
+     * @param passwd Le mot de passe
+     * @return True si l'authentification a réussi, False sinon
+     */
     private boolean isValid(String mail, String passwd) {
         if (mail == null || passwd == null) {
             Log.w(TAG, "isValid(mail, passwd) - mail and passwd cannot be null !");
@@ -197,6 +204,10 @@ public class MainActivity extends AppCompatActivity {
         alertbd.create().show();
     }
 
+    /**
+     * @brief Permet de vider le text d'un EditText
+     * @param edit EditText à vider
+     */
     private void clearText(EditText edit) {
         edit.getText().clear();
     }
